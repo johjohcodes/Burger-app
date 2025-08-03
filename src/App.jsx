@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-function Home() {
-  return <h1>Welcome to Burger App!</h1>;
+
+function Home({ message }) {
+  return <h1>{message}</h1>;
 }
 
 function About() {
@@ -19,7 +20,7 @@ function App() {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home message="Welcome to Burger App!" />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
