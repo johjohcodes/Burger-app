@@ -13,7 +13,7 @@ function About() {
 
 function App() {
   return (
-    <Router>
+    <><Router>
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
@@ -25,6 +25,9 @@ function App() {
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
+    <Person name = 'joe'  age = '25'></Person>
+   </>
+    
   );
 }
 
