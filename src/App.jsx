@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Person from './Person/Person'
 
@@ -11,42 +11,49 @@ function About() {
   return <h1>About Burger App</h1>;
 }
 
-class App extends component{
-   state = {
-    Persons : [
-         {name : 'joe ' , age : '55'},
-         {name : 'jane ', age : '2'},
-         {name : 'max ', age : '18'}
-    ]
-   }
-switchNameHandler =  () => {
-     console.log('button was clicked ');
-     
-}
+const App = props => {
+  const [personsState, setPersonsState] = useState({
+    Persons: [
+      { name: 'joe', age: '55' },
+      { name: 'jane', age: '2' },
+      { name: 'max', age: '18' }
+    ],
+    otherState: 'some other value'
+  });
 
-  render(){
+  const switchNameHandler = () => {
+    setPersonsState({
+      ...personsState,
+      Persons: [
+        { name: 'joseph', age: '55' },
+        { name: 'jane', age: '2' },
+        { name: 'max', age: '29' }
+      ]
+    });
+  };
+
   return (
-    <><Router>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-        </ul>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home message="Welcome to Burger App!" />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </Router>
-    <Person name = {this.state.Persons[0].name}  age = '25'></Person>
-    <button onClick={this.switchNameHandler}>switch</button>
-    <Person name = 'jane'  age = '30'><p>i no get work</p></Person>
-    <Person name = 'john'  age = '35'></Person>
-   </>
-    
+    <>
+      <Router>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home message="Welcome to Burger App!" />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Router>
+      <Person name={personsState.Persons[0].name} age={personsState.Persons[0].age} />
+      <button onClick={switchNameHandler}>switch</button>
+      <Person name={personsState.Persons[1].name} age={personsState.Persons[1].age}>
+        <p>i no get work</p>
+      </Person>
+      <Person name={personsState.Persons[2].name} age={personsState.Persons[2].age} />
+    </>
   );
-  }
-  
-}
+};
 
-export default App ;
+export default App;
