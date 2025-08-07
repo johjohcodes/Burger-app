@@ -11,7 +11,20 @@ function About() {
   return <h1>About Burger App</h1>;
 }
 
-function App() {
+class App extends component{
+   state = {
+    Persons : [
+         {name : 'joe ' , age : '55'},
+         {name : 'jane ', age : '2'},
+         {name : 'max ', age : '18'}
+    ]
+   }
+switchNameHandler =  () => {
+     console.log('button was clicked ');
+     
+}
+
+  render(){
   return (
     <><Router>
       <nav>
@@ -25,10 +38,15 @@ function App() {
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
-    <Person name = 'joe'  age = '25'></Person>
+    <Person name = {this.state.Persons[0].name}  age = '25'></Person>
+    <button onClick={this.switchNameHandler}>switch</button>
+    <Person name = 'jane'  age = '30'><p>i no get work</p></Person>
+    <Person name = 'john'  age = '35'></Person>
    </>
     
   );
+  }
+  
 }
 
-export default App;
+export default App ;
