@@ -32,6 +32,17 @@ const App = props => {
     });
   };
 
+  nameChangedHandler = (event) => {
+    setPersonsState({
+      ...personsState,
+      Persons : [
+        {name: 'max', age : 28},
+        {name :  event.target.value, age : 29},
+        {name : 'stephanie', age : 26}
+      ]
+    })
+  }
+
   return (
     <>
       <Router>
@@ -49,7 +60,7 @@ const App = props => {
       <Person name={personsState.Persons[0].name} age={personsState.Persons[0].age} />
       <button onClick={switchNameHandler}>switch</button>
       <Person name={personsState.Persons[1].name} age={personsState.Persons[1].age}
-      click = {switchNameHandlerS}>
+      click = {switchNameHandlerS.bind(this, 'joe')}>
         <p>i no get work</p>
       </Person>
       <Person name={personsState.Persons[2].name} age={personsState.Persons[2].age} />
