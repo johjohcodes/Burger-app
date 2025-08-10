@@ -60,7 +60,9 @@ const App = props => {
       <Person name={personsState.Persons[0].name} age={personsState.Persons[0].age} />
       <button onClick={switchNameHandler}>switch</button>
       <Person name={personsState.Persons[1].name} age={personsState.Persons[1].age}
-      click = {switchNameHandlerS.bind(this, 'joe')}>
+      click = {switchNameHandler.bind(this, 'joe')}
+      changed = {nameChangedHandler }>
+
         <p>i no get work</p>
       </Person>
       <Person name={personsState.Persons[2].name} age={personsState.Persons[2].age} />
