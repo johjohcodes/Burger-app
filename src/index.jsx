@@ -8,3 +8,13 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+const OpenRoot = () =>{
+  return(
+      <div></div>
+  )
+  
+}
+export default OpenRoot;
+
+
